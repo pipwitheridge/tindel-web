@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/tindel-web/static/css/main.8ff97ea2.css",
+    "main.js": "/tindel-web/static/js/main.372cd1e8.js",
+    "static/media/SILEOTSR.ttf": "/tindel-web/static/media/SILEOTSR.6d038861ead908d041bb.ttf",
+    "static/media/bootstrap-icons.woff?": "/tindel-web/static/media/bootstrap-icons.e559bf06bc84fd9525e6.woff",
+    "static/media/bootstrap-icons.woff2?": "/tindel-web/static/media/bootstrap-icons.ea98e12d2d58747f9fc5.woff2",
+    "static/media/myLogo.png": "/tindel-web/static/media/myLogo.b6a8c0650446bfc19048.png",
+    "index.html": "/tindel-web/index.html",
+    "main.8ff97ea2.css.map": "/tindel-web/static/css/main.8ff97ea2.css.map",
+    "main.372cd1e8.js.map": "/tindel-web/static/js/main.372cd1e8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8ff97ea2.css",
+    "static/js/main.372cd1e8.js"
+  ]
+}
