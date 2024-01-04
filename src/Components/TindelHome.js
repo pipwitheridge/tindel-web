@@ -8,6 +8,7 @@ import { Icon } from 'react';
 import { ButtonGroup, Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
+import RandomMode from "./RandomMode";
 
 
 
@@ -20,6 +21,7 @@ class TindelHome extends React.Component {
       this.openBookMenu = this.openBookMenu.bind(this);
       this.updateWordFreqChoice = this.updateWordFreqChoice.bind(this);
       this.updateIndex = this.updateIndex.bind(this);
+      this.enterRandomMode = this.enterRandomMode.bind(this);
       this.state = {
         showBookMenu: true,
         showChapterNavbar: false,
@@ -29,7 +31,9 @@ class TindelHome extends React.Component {
         bookChoice: "",
         textInputValue: "",
         wordFreqSelect: 0,
-        selectedIndex: 0
+        selectedIndex: 0,
+        showRandomMode: false,
+        randomLanguageChoice: "",
     };
 
   }
@@ -157,15 +161,23 @@ MyButtonGroup = () => {
       this.setState({showNextChapterNav: objectFilter});
       this.setState({showPrevChapterNav: objectFilterPrev});
 
-
     }  
+
+  // Enter Random Mode
+  enterRandomMode = (languageChoice) => {
+    this.setState({showBookMenu: false});
+    this.setState({showRandomMode: true});
+    this.setState({randomLanguageChoice: languageChoice})
+  }
 
 
     
 // Render Book Menu
     BooKMenuRender = () => {
       return(
-        this.state.showBookMenu?<ChapterAccordion MyButtonGroup={this.MyButtonGroup} updateIndex={this.updateIndex} updateWordFreqChoice={this.updateWordFreqChoice} wordFreqSelect={this.state.wordFreqSelect} chapterMenuClick={this.chapterMenuClick}/>:null
+        this.state.showBookMenu?
+        <ChapterAccordion enterRandomMode={this.enterRandomMode} MyButtonGroup={this.MyButtonGroup} updateIndex={this.updateIndex} updateWordFreqChoice={this.updateWordFreqChoice} wordFreqSelect={this.state.wordFreqSelect} chapterMenuClick={this.chapterMenuClick}/>
+        :null
       ) 
     }
 
@@ -199,18 +211,32 @@ return(
   }
 
 
+    // Only render the Navbar once a chapter button has been clicked
+    RandomModeRender = () => {
+      const showRandomMode = this.state.showRandomMode;
+        return(
+          showRandomMode?
+          <div showsVerticalScrollIndicator={false}>
+            <RandomMode openBookMenu={this.openBookMenu} randomLanguageChoice={this.state.randomLanguageChoice} textInputValue={this.state.textInputValue} wordFreqSelect={this.state.wordFreqSelect}/>
+          </div>:null
+        ) 
+    }
 
 
 
 
 render() {
 
+  console.log(this.state.randomNoGen)
+
+
     return (
-        <div style={{width: "100%", height: "100%"}}>
+        <div className="homeContainer" style={{height: "100%"}}>
 
         
 <this.BooKMenuRender/>
 <this.ChapterNavbarRender/>
+<this.RandomModeRender/>
 
           
         </div>

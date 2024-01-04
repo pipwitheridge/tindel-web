@@ -1,12 +1,8 @@
 import React from 'react';
 import data from './bibleData.json'
 import { div } from 'react';
-import TextInputGrow from './TextInputGrow';
 import { Accordion, Form, Container } from 'react-bootstrap';
 import '../fonts/SILEOTSR.ttf';
-
-
-
 
 
 
@@ -37,6 +33,9 @@ if (!this.state.fontsLoaded) {
      return ( 
 
       <Container>
+
+{wordFreqSelect!==0 && <div style={{marginBottom: 30}}>Only displaying verses whose words occur {wordFreqSelect}+ times.</div>}
+
       <div>
 
 { data.filter(bit => bit.bookName===bookChoice && bit.Chapter===parseInt(chapterChoice) && bit.freqBracket>=parseInt(wordFreqSelect)).map(FilteredBit => {
@@ -48,12 +47,12 @@ if (!this.state.fontsLoaded) {
                          
                         <div style={{marginBottom: 60}}>
                         <div  style={{fontWeight: "bold", marginBottom: 10}}>Verse {FilteredBit.Verse}</div>
-                        <Accordion>
-                        <Accordion.Header>
+                        <Accordion key={FilteredBit.originalText}>
+                        <Accordion.Header key={FilteredBit.originalText}>
                         
                         
                         <div style={hebrewOriginalLang ? {fontSize: 30, marginBottom: 10, fontFamily: "Ezra SIL", 
-                        textAlign: "end", width: "100%", marginRight: "10px", lineHeight: 1.8} :
+                        textAlign: "end", marginRight: "10px", lineHeight: 1.8} :
                         {fontSize: 25, marginBottom: 10, fontFamily: "Times New Roman", 
                         divAlign:"left"}} key={FilteredBit.bookName+FilteredBit.Chapter}>{FilteredBit.originalText}
                         
@@ -63,15 +62,15 @@ if (!this.state.fontsLoaded) {
                        
                         
                         </Accordion.Header>
-                       <Accordion.Body>
+                       <Accordion.Body key={FilteredBit.English}>
                         <div>
                         <div style={{fontSize: 15, marginBottom: 10} }>{FilteredBit.English} </div>
                         </div>
                         </Accordion.Body>
                         </Accordion>
                        
-                        <Form style={{marginTop: 10}}>
-                        <Form.Control as="textarea" rows={2} placeholder="Type translation here." />
+                        <Form style={{marginTop: 10}} key={FilteredBit.English}>
+                        <Form.Control key={FilteredBit.English} as="textarea" rows={2} placeholder="Type translation here." />
                            
                         </Form>
 

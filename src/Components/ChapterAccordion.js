@@ -3,7 +3,7 @@ import {div, Image } from 'react';
 import data from './bibleData.json'
 import { Divider } from 'react';
 import { Accordion, Button, Modal, Navbar } from 'react-bootstrap';
-import { FaWrench, FaInfoCircle } from 'react-icons/fa';
+import { FaWrench, FaInfoCircle, FaFilter } from 'react-icons/fa';
 import logo from './myLogo.png';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -50,8 +50,6 @@ setWrenchModalVisible = (visible) => {
     return (
 
       <>
-
-<Container>
       <Row >
         <Col > 
       <div>
@@ -60,7 +58,12 @@ setWrenchModalVisible = (visible) => {
       </Col>
         <Col>
               <div className="d-flex flex-row-reverse">
-              <Button variant="dark" onClick={() => this.setWrenchModalVisible(true)} style={{height: 80, width: 80, marginRight: 20}}><div><FaWrench size={40}/></div></Button>
+              <Button variant="dark" onClick={() => this.setWrenchModalVisible(true)} style={{height: 80, width: 80, marginRight: 20}}>
+              <div>
+                <div style={{marginBottom: 5}}><FaFilter size={30}/></div>
+                <div>{this.props.wordFreqSelect===0 ? "All" : this.props.wordFreqSelect+"+"}</div>
+              </div>
+              </Button>
               <Button variant="dark" onClick={() => this.setModalVisible(true)} style={{height: 80, width: 80, marginRight: 20}}><div><FaInfoCircle size={40}/></div></Button>
               </div>
         </Col>
@@ -68,17 +71,15 @@ setWrenchModalVisible = (visible) => {
 
   
 
-        <div style={{width: '100%'}} showsVerticalScrollIndicator={false}>
+        <div showsVerticalScrollIndicator={false}>
 
 
-       
+        <div style={{marginBottom: 20, marginTop: 50}}>
 
-            
-              
-     
+        <Button variant="secondary" onClick={() => this.props.enterRandomMode("Hebrew")} style={{height: 80, width: "100%", marginRight: 20, marginBottom: 20}}><div>Random Hebrew/OT Verses</div></Button>
+        <Button variant="secondary" onClick={() => this.props.enterRandomMode("Greek")} style={{height: 80, width: "100%", marginRight: 20, marginBottom: 20}}><div>Random Greek/NT Verses</div></Button>
 
-        <div style={{marginBottom: 20}}></div>
-
+        </div>
         { data.filter(bit => bit.Chapter===1 && bit.Verse===1).map(FilteredBit => {
                 return(
 
@@ -99,8 +100,8 @@ setWrenchModalVisible = (visible) => {
       <Accordion.Body className="accordionColour">
     
     
-    <div style={{width: '100%'}}>
-    <div style={{flexDirection:'row', flexWrap:'wrap', width: '100%', justifyContent: 'space-between', marginBottom: 30}}>
+    <div>
+    <div style={{flexDirection:'row', flexWrap:'wrap', justifyContent: 'space-between', marginBottom: 30}}>
       
     { data.filter(thing => thing.Verse===1 && thing.bookName===FilteredBit.bookName).map(FilteredThing => {
                          const buttonNum = FilteredThing.Chapter;   
@@ -203,24 +204,16 @@ setWrenchModalVisible = (visible) => {
         <Modal.Header>
           <Modal.Title><div>Filter verses by how many occurrences their words have in the bible.</div></Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body onClick={() => this.setWrenchModalVisible(!wrenchModalVisible)}>
 
         <this.props.MyButtonGroup />
 
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={() => this.setWrenchModalVisible(!wrenchModalVisible)}>
-            Close
-          </Button>
     
-        </Modal.Footer>
       </Modal>
 
 
 
-
-
-      </Container>
 
       </>
 
