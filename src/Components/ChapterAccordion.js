@@ -177,11 +177,11 @@ setWrenchModalVisible = (visible) => {
         </Accordion>
 
         <Accordion>
-        <Accordion.Header><div style={{fontSize: 20}}>How do I submit feedback / questions?</div></Accordion.Header>
+        <Accordion.Header><div style={{fontSize: 20}}>Help improve the app!</div></Accordion.Header>
         <Accordion.Body>
         <div >Email phillipwitheridge@gmail.com</div>
         <br />
-              <div >I'd love to hear from you about how I could improve this app!</div>
+              <div >I'd love to hear from you about how I could improve this app! Any questions, suggestions or feedback welcome.</div>
                       </Accordion.Body>
         </Accordion>
           

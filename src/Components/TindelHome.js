@@ -115,9 +115,10 @@ MyButtonGroup = () => {
     this.setState({showBookMenu: true}); 
     this.setState({chapterChoice: 1});
     this.setState({showBookMenu: true}); 
-    this.setState({showChapterNavbar: false,}); 
-    this.setState({showNextChapterNav: false,}); 
-    this.setState({showPrevChapterNav: false,}); 
+    this.setState({showChapterNavbar: false}); 
+    this.setState({showNextChapterNav: false}); 
+    this.setState({showPrevChapterNav: false});
+    this.setState({showRandomMode: false});  
   };
 
 
