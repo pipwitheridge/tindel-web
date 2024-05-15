@@ -26,6 +26,15 @@ const chapterChoice = this.props.chapterChoice;
 const wordFreqSelect = this.props.wordFreqSelect;
 
 
+const showEnglish = (thisEnglish) => {
+    console.log(document.getElementById(thisEnglish).style.display)
+if(document.getElementById(thisEnglish).style.display="none") {
+    document.getElementById(thisEnglish).style.display=""
+} 
+} 
+
+
+
 if (!this.state.fontsLoaded) {
   return null;
 }
@@ -34,7 +43,12 @@ if (!this.state.fontsLoaded) {
 
       <Container>
 
-{wordFreqSelect!==0 && <div style={{marginBottom: 30}}>Only displaying verses whose words occur {wordFreqSelect}+ times.</div>}
+<div style={{marginBottom: 30}}>
+{wordFreqSelect!==0 && <span>Only displaying verses whose words occur {wordFreqSelect}+ times. </span>}
+<span>Click on a verse to reveal an English translation.</span>
+</div>
+
+
 
       <div>
 
@@ -47,11 +61,11 @@ if (!this.state.fontsLoaded) {
                          
                         <div style={{marginBottom: 60}}>
                         <div  style={{fontWeight: "bold", marginBottom: 10}}>Verse {FilteredBit.Verse}</div>
-                        <Accordion key={FilteredBit.originalText}>
-                        <Accordion.Header key={FilteredBit.originalText}>
+                        <div key={FilteredBit.originalText}>
+                        <div onClick={() => showEnglish(FilteredBit.bookName+FilteredBit.Chapter+FilteredBit.Verse+FilteredBit.English)} style={{backgroundColor: "white"}} key={FilteredBit.originalText}>
                         
                         
-                        <div style={hebrewOriginalLang ? {fontSize: 30, marginBottom: 10, fontFamily: "Ezra SIL", 
+                        <div className="originalText" style={hebrewOriginalLang ? {fontSize: 30, marginBottom: 20, fontFamily: "Ezra SIL", 
                         textAlign: "end", marginRight: "10px", lineHeight: 1.8} :
                         {fontSize: 25, marginBottom: 10, fontFamily: "Times New Roman", 
                         divAlign:"left"}} key={FilteredBit.bookName+FilteredBit.Chapter}>{FilteredBit.originalText}
@@ -61,13 +75,13 @@ if (!this.state.fontsLoaded) {
                    
                        
                         
-                        </Accordion.Header>
-                       <Accordion.Body key={FilteredBit.English}>
-                        <div>
-                        <div style={{fontSize: 15, marginBottom: 10} }>{FilteredBit.English} </div>
                         </div>
-                        </Accordion.Body>
-                        </Accordion>
+                       <div style={{display: "none"}} id={FilteredBit.bookName+FilteredBit.Chapter+FilteredBit.Verse+FilteredBit.English} key={FilteredBit.English}>
+                        <div>
+                        <div style={{fontSize: 15, marginBottom: 20} }>{FilteredBit.English} </div>
+                        </div>
+                        </div>
+                        </div>
                        
                         <Form style={{marginTop: 10}} key={FilteredBit.English}>
                         <Form.Control key={FilteredBit.English} as="textarea" rows={2} placeholder="Type translation here." />

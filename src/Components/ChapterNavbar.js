@@ -14,18 +14,20 @@ class ChapterNavbar extends React.Component {
 
 
         return (        
-      
-      <div className="d-flex flex-direction-row" style={{marginBottom:"10%", justifyContent: "space-between", alignItems:"center"}}>
+      <>
+       <div className="d-flex flex-direction-row" style={{marginBottom:20, justifyContent: "space-between", alignItems:"center"}}>
         <div><Button variant="dark" style={{height: 80, width: 80}} onClick={this.props.openBookMenu}><FaBars style={{height: 30, width: 30}}/></Button></div>
           <div className="d-flex flex-direction-row align-items-center">
           <this.props.PrevChapterNavLinkRender style={{marginRight: 20, marginLeft: 20}}/>
-            <div style={{fontSize: 25, marginRight: 20, marginLeft: 20, fontSize: 30}}>{bookChoice} {chapterChoice}</div>
+            <div className="bigScreen" style={{fontSize: 25, marginRight: 20, marginLeft: 20, fontSize: 30}}>{bookChoice} {chapterChoice}</div>
           <this.props.NextChapterNavLinkRender style={{marginRight: 20, marginLeft: 20}}/>
-
-
           </div>
-        
       </div>
+      <div className="smallScreen" style={{fontSize: 25, marginRight: 20, marginLeft: 20, marginBottom: 20, fontSize: 30, justifyContent: "right"}}><div>{bookChoice} {chapterChoice}</div></div>
+
+      
+      </>
+     
     
 
         );

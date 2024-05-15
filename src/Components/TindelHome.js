@@ -185,13 +185,13 @@ MyButtonGroup = () => {
       // Only render the Next Chapter Button if its visibility is set to 'true'
 NextChapterNavLinkRender = () => {
   return(
-    this.state.showNextChapterNav?<Button variant="dark" style={{width: 80, height: 80}} onClick={this.nextChapter}><FaArrowRight style={{width: 30, height: 30}}/></Button>:null
+    this.state.showNextChapterNav?<Button variant="dark" style={{width: 80, height: 80, marginRight: 20}} onClick={this.nextChapter}><FaArrowRight style={{width: 30, height: 30}}/></Button>:null
   ) 
 }
 
 PrevChapterNavLinkRender = () => {
 return(
-  this.state.showPrevChapterNav?<Button variant="dark" style={{width: 80, height: 80}} onClick={this.previousChapter}><FaArrowLeft style={{width: 30, height: 30}}/></Button>:null
+  this.state.showPrevChapterNav?<Button variant="dark" style={{width: 80, height: 80, marginRight: 20}} onClick={this.previousChapter}><FaArrowLeft style={{width: 30, height: 30}}/></Button>:null
 ) 
 }
 
