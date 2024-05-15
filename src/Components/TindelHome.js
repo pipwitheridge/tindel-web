@@ -11,8 +11,6 @@ import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
 import RandomMode from "./RandomMode";
 
 
-
-
 class TindelHome extends React.Component {
     constructor(props) {
       super(props);
@@ -223,13 +221,9 @@ return(
         ) 
     }
 
-
-
-
 render() {
 
-  console.log(this.state.randomNoGen)
-
+  console.log(this.state.randomNoGen);
 
     return (
         <div className="homeContainer" style={{height: "100%"}}>
