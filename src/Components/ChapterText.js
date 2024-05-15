@@ -44,7 +44,7 @@ if (!this.state.fontsLoaded) {
       <Container>
 
 <div style={{marginBottom: 30}}>
-{wordFreqSelect!==0 && <span>++ Only displaying verses whose words occur {wordFreqSelect}+ times. </span>}
+{wordFreqSelect!==0 && <span>Only displaying verses whose words occur {wordFreqSelect}+ times. </span>}
 <span>Click on a verse to reveal an English translation.</span>
 </div>
 
