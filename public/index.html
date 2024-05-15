@@ -25,15 +25,18 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>Tindel</title>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7XD03E57PD"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-7XD03E57PD');
-    </script>
+     <!-- Google tag (gtag.js) -->
+     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7XD03E57PD"></script>
+     <script>
+     const thisTime = new Date().getTime();
+     if(window.localStorage.getItem("userTag")===null) {
+         window.localStorage.setItem("userTag", thisTime)
+     }
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+     gtag('config', 'G-7XD03E57PD', {'thisUser': window.localStorage.getItem("userTag")});
+     </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
